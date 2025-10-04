@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leafo // music</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    @font-face {
+      font-family: 'leafo';
+      src: url(fonts/leafo.ttf) format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'leafo';
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      width: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      padding-left: 51px;
+      font-size: 26px;
+      box-sizing: border-box;
+      position: fixed;   
+      z-index: 1000;
+    
+    }
+
+    .topbar img {
+      position: absolute;
+      left: 20px;
+      height: 30px;
+      width: 30px;
+    
+    }
+    .logo {
+  position: absolute;
+  left: 10px;
+  top: 57px; 
+  height: 33px;
+  width: 33px;
+    }
+
+    .content {
+      padding-top: 110px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 50px auto 10px auto;
+      width: 600px;
+    }
+
+    .song .image {
+  width: 200px;
+  height: 200px;
+  margin-right: 30px;
+  flex-shrink: 0;
+  object-fit: cover;
+    }
+
+    .song .title {
+      font-size: 28px;
+      font-weight: bold;
+      width: 300px; 
+      text-align: left;
+      word-wrap: break-word;
+    }
+
+    .desc {
+      font-size: 20px;
+      font-weight: bold;
+      font-style: italic;
+      color: #000000;
+      text-align: center;
+      margin: 30px auto 40px auto;
+      width: 600px;
+      line-height: 1.4em;
+      white-space: pre-wrap;
+    }
+    .social-icons {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 9999;
+    }
+
+    .social-icons a i {
+      color: black;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a i:hover {
+      color: gray;
+    }
+    .footer {
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  font-size: 14px;
+  color: #000000; /* you can make it #fff if you want it brighter */
+  font-family: monospace; /* or your site’s main font */
+  opacity: 0.8;
+  z-index: 1000;
+}
+    a {
+  color: #000000;   /* custom link color */
+  text-decoration:underline; /* remove underline */
+}
+
+  </style>
+</head>
+<body>
+<div id="pw-gate" style="
+  position:fixed;
+  inset:0;
+  background:#000; /* solid black background */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+">
+  <div id="pw-card" style="
+    position:relative;
+    width:calc(100% - 40px);
+    max-width:400px;
+    background:#fff;
+    padding:28px;
+    border-radius:8px;
+    box-shadow:0 12px 40px rgba(0,0,0,.6);
+    text-align:center;
+    font-family:Arial, sans-serif;
+  ">
+    <!-- Close (X) -->
+    <button id="pw-close" style="
+      position:absolute;
+      top:10px;
+      right:10px;
+      border:none;
+      background:transparent;
+      font-size:20px;
+      cursor:pointer;
+    ">&times;</button>
+
+    <!-- Lock Icon (SVG) -->
+    <div style="margin-bottom:18px; display:flex; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
+        <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+                 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
+                 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
+                 3 0 0 1 6 0v2z"/>
+      </svg>
+    </div>
+
+    <!-- Password input -->
+    <input id="pw-input" type="password" placeholder="password" style="
+      width:100%;
+      padding:10px 12px;
+      font-size:16px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      box-sizing:border-box;
+      outline:none;
+      margin-bottom:14px;
+    ">
+
+    <!-- Enter button -->
+    <button id="pw-submit" style="
+      padding:10px 16px;
+      font-size:15px;
+      border-radius:6px;
+      border:0;
+      background:#111;
+      color:#fff;
+      cursor:pointer;
+      width:100%;
+    ">Enter</button>
+  </div>
+</div>
+
+  <div class="topbar">
+    'find what you love and let it kill you'    OUT    NOW    ;D
+  </div>
+  <a href="/home">
+  <img src="images/favicon.png" alt="Logo" class="logo">
+</a>
+
+  <div class="content">
+    <h1>enter leafo's mind: I</h1>
+
+    <!-- 15 song blocks -->
+    <div class="song">
+  <img class="image" src="images/rualright.jpg" alt="r u alright">
+  <div class="title">r u alright</div>
+    </div>
+    <div class="desc">the   intro   song   -   my   previous-previous   ex   girlfriend,   we   had   a   really   bad   breakup   and   i   just   wanted   to ask   if   shes   
+alright   after   all   of   that   happened.   this   song   is   also   a   direct   sequel   to   "r   u   ok"   wherein   i   genuinely   wanna   know   if   
+shes   doing   alright   since   i   never   got   the   chance   to   ask...   'r   u   ok'   was   the   question   in   my   mind    for   the   longest   time   
+but   what   i   brought   out   was   'r   u   alright'</div>
+
+    <div class="song">
+  <img class="image" src="images/fourteen.jpg" alt="fourteen">
+  <div class="title">fourteen</div>
+    </div>
+    <div class="desc">the   whole   meaning   of   this   song   is   in   the   chorus   itself.   this   song   is   also   the   very   first   song   of   mine   where   its   been   
+in   a   spotify   editorial   playlist   lol.   anyways,   this   song   is   about   that   feeling   when   you   fall   inlove   at   a   young   age   but   suddenly   it    just   disappears   as   time   moves   on.   i   had   the   'one   four'   idea   for   so   long   and   im   glad   i   was   able   to   execute   it   just   fine   in   this   album.</div>
+
+    <div class="song">
+      <img class="image" src="images/surprisetheresnothingleft.png" alt="surprisetheresnothingleft">
+      <div class="title">surprise, theres nothing left</div>
+    </div>
+    <div class="desc">my   previous-previous   ex   and   i   had   a   really   complicated   post-breakup.   i   dont   wanna   get   into   it   too   much   cuz   its   
+actually   just   insane   but   overall,   this   song   was   written   about   when   ive   been   holding   on   to   the   hope   that   she   would   
+return   lol   yeah.   i   kept   the   hope   that   maaaaaaybe   yooooouuuuuuuuuuuud   retuuuuuurnnnnnnnnnnn!i!i!ii!i!i!i!i!i!i!i!!ii!i!
+</div>
+
+    <div class="song">
+      <img class="image" src="images/findwhatyouloveandletitkillyou.jpg" alt="findwhatyouloveandletitkillyou">
+      <div class="title">find what you love and let it kill you</div>
+    </div>
+    <div class="desc">the   album   name   and   the   first   two   part   song   i   have   ever   done.   this   song   took   me   three   months   to   make   cuz   i   did   not   know   
+how   to   perfectly   execute   this.   i   really   love   the   meaning   and   the   metaphor   behind   this   song;   the   first   half   goes   on   
+about   why   do   i   feel   so   shit   and   invisible   to   people   like   why   do   i   never   feel   noticed   anymore   and   as   the   tension   
+builds   up,   we   get   to   the   second   song   where   it   explains   everything   (why   im   being   ignored   nd   shit).   the   second   song   
+explains   that   my   past   lover   has   killed   me   and   i   was   just   an   entity   the   entire   time   like   a   ghost.   the   metaphor   behind   
+it   is   literally   the   song   title   itself,   you   found   what   you   love   and   it   got   you   killed.   a   love   and   a   heartbreak   song   
+into   one   ;)
+check   the   music   video   out   <a href="https://www.youtube.com/" target="_blank">here</a>
+</div>
+
+    <div class="song">
+      <img class="image" src="images/duke.jpg" alt="duke">
+      <div class="title">duke</div>
+    </div>
+    <div class="desc">the   name   of   my   ex's   dog   who   unfortunately   passed   away   earlier   this   year.   i   fucking   loved   that   dog   :,(   -   the   lines   
+"i   was   writing   on   the   walls   words   i   wish   i   couldve   told   when   your   mom   started   to   call   just   to   see   my   view"   is   
+probably   one   of   my   favorite   lines   that   ive   written   throughout   the   entire   album   cuz   like   idk   i   js   wanted   to   check   
+up   on   duke   and   see   how   hes   been   after   she   asked   me   to   link   up   for   closure.
+</div>
+
+    <div class="song">
+      <img class="image" src="images/ohyeahialsofeelenvioussometimeslol.jpg" alt="ohyeahialsofeelenvioussometimeslol">
+      <div class="title">oh yeah i also feel envious sometimes lol</div>
+    </div>
+    <div class="desc">pretty   short   description   but   its   just   a   song   i   wrote   cuz   i   felt   envious   for   a   short   period   of   time   towards   this   
+friend   i   had.   thats   pretty   much   abt   it.</div>
+
+    <div class="song">
+      <img class="image" src="images/reverie.jpg" alt="reverie">
+      <div class="title">reverie</div>
+    </div>
+    <div class="desc">the   first   love   song   of   the   album   after   six   tracks   of   singing   about   heartbreak,   loss,   and   envy   LMAO.   i   just   cant   stop   
+thinking   about   this   one   girl   who   i   knew   for   a   long   time,   havent   talked   to   her   in   years   and   idk   i   started   to   like   
+her   and   eventually   we   reconnected   after   years   so..........   W???   idk   lol,   shes   beautiful   as   fuck   and   i   wanna   kms   
+cuz   im   a   loser   n   i   js   make   music   and   thats   it.
+</div>
+
+    <div class="song">
+      <img class="image" src="images/imsorryipusheduaway.png" alt="imsorryipusheduaway">
+      <div class="title">im sorry i pushed u away</div>
+    </div>
+    <div class="desc">an   apology   to   my   previous   ex   who   i   keep   pushing   away   whenever   i   feel   like   shit.   its   an   immature   and   selfish   habit   
+i   built   up   wherein   id   push   everyone   away   &   isolate   myself   so   i   dont   bring   out   anymore   of   my   bad   temper   and   its   a   
+really   bad   habit   but   ive   been   getting   help   and   trying   to   be   more   open   and   communicative   which   is   pretty   cool   i   guess   ;p</div>
+
+    <div class="song">
+      <img class="image" src="images/trial+error.png" alt="trial+error">
+      <div class="title">trial + error</div>
+    </div>
+    <div class="desc">a   song   for   a   ex-friend   who   ive   had   a   terrible   falling   out   with.   lowkey   sucks   cuz   i   also   grew   up   with   that   person   too   
+and   it   just   hurts   to   see   them   switch   up.   ive   had   my   faults   too   and   i   owned   up   to   it   but   idk   she   was   weird   and   the   
+whole   thing   was   weird   and   one   thing   led   to   another   and   somehow   the   whole   friend   group   fell   apart.   (yes   my   irls)</div>
+
+    <div class="song">
+      <img class="image" src="images/idontknowuanymorelikeiusedto.jpg" alt="idontknowuanymorelikeiusedto">
+      <div class="title">i dont know u anymore like i used to</div>
+    </div>
+    <div class="desc">the   very   first   lead   single   which   released   last   year   (also   the   song   that   gave   me   hella   views   on   tiktok   lol,   people   
+discovered   me   from   that   vid).   this   song   is   about   that   previous-previous   ex   girlfriend   of   mine   wherein   there   are   2   
+different   versions   of   her:   when   we   started   dating   and   when   she   left.   "i   dont   know   you   anymore"   is   a   line   i   kept   
+repeating   in   my   head   the   day   we   broke   up   (i   never   directly   said   it   to   her)   cuz   the   girl   whom   i   loved   was   not   the   
+same   girl   who   left   me   if   yall   get   what   im   trying   to   put   here.   it   sucks   cuz   i   met   her   when   we   were   really   young   
+(around   7-8)   and   we   grew   up   together   too.   we   started   dating   in   high   school   then   yeah   she   left   but   its   okay   cuz   i   
+got   my   bag   up   :p</div>
+
+    <div class="song">
+      <img class="image" src="images/11.png" alt="11">
+      <div class="title">11</div>
+    </div>
+    <div class="desc">song description</div>
+
+    <div class="song">
+      <img class="image" src="images/12.png" alt="12">
+      <div class="title">12</div>
+    </div>
+    <div class="desc">song description</div>
+
+    <div class="song">
+      <img class="image" src="images/apageoffthebook.jpg" alt="apageoffthebook">
+      <div class="title">a page off the book</div>
+    </div>
+    <div class="desc">i   dont   really   think   its   hard   to   miss   but   its   just   another   metaphor   i   thought   of   wherein   i   imagined   a   scenario   
+that   she   just   never   dated   me   instead,   like   how   easy   it   is   to   rip   a   page   off   a   book.   the   entire   page   is   filled   of   
+us   and   idk   i   js   imagined   that   she   would   tear   it   from   the   book.   thats   all   lol.</div>
+
+    <div class="song">
+      <img class="image" src="images/myself.jpg" alt="myself">
+      <div class="title">myself</div>
+    </div>
+    <div class="desc">my   mental   was   really   starting   to   wear   me   down   when   i   was   sixteen   to   the   point   i   had   thoughts   of   actually   doing   it.   i   
+found   an   old   note   i   had   written   that   i   never   got   to   finish   cuz   my   friends   (who   i   am   thankful   for)   asked   me   to   
+play   roblox   lol.   even   the   simplest   thing   can   do   so   much   for   a   person   and   no   one   realizes   it   til   its   too   late   
+so   im   thankful   for   my   friends   cuz   everything   yall   are   reading,   viewing,   listening   to   right   now   would   not   be   
+exist   if   it   werent   for   them.   love   yall   bruh.</div>
+
+    <div class="song">
+      <img class="image" src="images/growthfrom2007.jpg" alt="growthfrom2007">
+      <div class="title">growth, from two-thousand seven</div>
+    </div>
+    <div class="desc">the   outro   song   -   i   posted   a   video   wherein   i   talked   about   the   story   of   growth   and   how   its   really   powerful   as   
+life   goes   on   and   how   i   want   to   share   it   with   you   all.   i   think   its   a   beautiful   thing   idk.   yall   have   seen   me   
+grow   as   a   person   and   i   love   yall   for   staying   with   me.   two-thousand seven   in   the   title   doesnt   really   mean   anything   since   its   
+the   year   i   was   born   lol.   but   i   just   thought   that   maybe   this   meaning   of   a   song   would   be   a   good   outro.   idk   im   
+buggin.   this   whole   album   i   sang   about   heartbreak   and   loss   and   envy   but   here,   i   sing   about   two   people   who   have   kept   me   alive   for   years   and   i   hold   so   dearly   in   my   
+heart;   my   grandma   and   my   dad.   i   cried   to   this   the   moment   i   heard   it   after   making   this   and   lowkey,   a   simple   
+thank   you   isnt   enough   for   everything   they   provided   for   me   hahaha.</div>
+
+  </div>
+  <div class="social-icons">
+    <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
+    <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
+  </div>
+<footer class="footer">
+  © 2025 leafo — all rights reserved
+</footer>
+</body>
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+  // DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   
+(function () {
+  const PASSWORD = 'dakkelbutonileafo';
+  const STORAGE_KEY = 'pw-gate-unlocked';
+  const gate = document.getElementById('pw-gate');
+  const input = document.getElementById('pw-input');
+  const submit = document.getElementById('pw-submit');
+  const close = document.getElementById('pw-close');
+
+  // if unlocked
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  function unlock() {
+    if (input.value === PASSWORD) {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      gate.style.display = 'none';
+    } else {
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  submit.addEventListener('click', unlock);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') unlock();
+  });
+  close.addEventListener('click', () => {
+    gate.style.display = 'none';
+  });
+
+  input.focus();
+})();
+</script>
+
+</html>

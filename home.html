@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leafo // home</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    @font-face {
+      font-family: 'leafo';
+      src: url(fonts/leafo.ttf) format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: rgba(0,0,0,0.6) no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'leafo';
+    }
+    .top-bar {
+      width: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      font-size: 26px;
+      
+    }
+    .top-bar img {
+      position: absolute;
+      left: 20px;
+      height: 30px;
+      width: 30px;
+    }
+    .logo {
+      margin: 5px 0 0 10px;
+    }
+
+    .hero {
+      background: url('images/homeBackground.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 230px 60px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    /* puzzles */
+    .puzzle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+      gap: 20px;
+      overflow: visible;
+    }
+
+    .puzzle-container img {
+      width: 200px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      transform-origin: center center;
+    }
+
+    /* itsura ng puzzle */
+    .puzzle1 { transform: rotate(-15deg); }
+    .puzzle2 { transform: rotate(8deg); }
+    .puzzle3 { transform: rotate(-6deg); }
+    .puzzle4 { transform: rotate(12deg); }
+
+    .puzzle-container img:hover {
+      transform: scale(1.1) rotate(var(--rotation));
+    }
+
+    /* pick ur piece */
+    .caption {
+
+      color: #ccc;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    /* socials */
+    .social-icons {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      max-width: calc(100vw - 40px);
+      box-sizing: border-box;
+    }
+
+    .social-icons a {
+      color: beige;
+      font-size: 24px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: gray;
+    }
+    .footer {
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  font-size: 14px;
+  color: #000000; /* you can make it #fff if you want it brighter */
+  font-family: monospace; /* or your site’s main font */
+  opacity: 0.8;
+  z-index: 1000;
+}
+
+  </style>
+</head>
+<body>
+<div id="pw-gate" style="
+  position:fixed;
+  inset:0;
+  background:#000; /* solid black background */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+">
+  <div id="pw-card" style="
+    position:relative;
+    width:calc(100% - 40px);
+    max-width:400px;
+    background:#fff;
+    padding:28px;
+    border-radius:8px;
+    box-shadow:0 12px 40px rgba(0,0,0,.6);
+    text-align:center;
+    font-family:Arial, sans-serif;
+  ">
+    <button id="pw-close" style="
+      position:absolute;
+      top:10px;
+      right:10px;
+      border:none;
+      background:transparent;
+      font-size:20px;
+      cursor:pointer;
+    ">&times;</button>
+
+    <div style="margin-bottom:18px; display:flex; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
+        <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+                 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
+                 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
+                 3 0 0 1 6 0v2z"/>
+      </svg>
+    </div>
+
+    <input id="pw-input" type="password" placeholder="password" style="
+      width:100%;
+      padding:10px 12px;
+      font-size:16px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      box-sizing:border-box;
+      outline:none;
+      margin-bottom:14px;
+    ">
+
+    <button id="pw-submit" style="
+      padding:10px 16px;
+      font-size:15px;
+      border-radius:6px;
+      border:0;
+      background:#111;
+      color:#fff;
+      cursor:pointer;
+      width:100%;
+    ">Enter</button>
+  </div>
+</div>
+
+  <div class="top-bar">
+    'find what you love and let it kill you'    OUT    NOW    ;D
+  </div>
+  <a href="/home">
+  <img src="images/favicon.png" alt="Logo" class="logo">
+</a>
+
+  <div class="hero">
+    <div class="puzzle-container">
+      <a href="/music"><img src="images/topLeft.png" alt="Puzzle 1" class="puzzle1"></a>
+      <a href="/fwylaliky"><img src="images/bottomLeft.png" alt="Puzzle 2" class="puzzle2"></a>
+      <a href="/about"><img src="images/topRight.png" alt="Puzzle 3" class="puzzle3"></a>
+      <a href="/contact"><img src="images/bottomRight.png" alt="Puzzle 4" class="puzzle4"></a>
+    </div>
+
+    <div class="caption">[pick your piece]</div>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
+    <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
+  </div>
+<footer class="footer">
+  © 2025 leafo — all rights reserved
+</footer>
+
+</body>
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+  // DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   
+(function () {
+  const PASSWORD = 'dakkelbutonileafo';
+  const STORAGE_KEY = 'pw-gate-unlocked';
+  const gate = document.getElementById('pw-gate');
+  const input = document.getElementById('pw-input');
+  const submit = document.getElementById('pw-submit');
+  const close = document.getElementById('pw-close');
+
+  // if unlocked
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  function unlock() {
+    if (input.value === PASSWORD) {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      gate.style.display = 'none';
+    } else {
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  submit.addEventListener('click', unlock);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') unlock();
+  });
+  close.addEventListener('click', () => {
+    gate.style.display = 'none';
+  });
+
+  input.focus();
+})();
+</script>
+
+</html>
