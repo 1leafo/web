@@ -14,6 +14,35 @@
       font-weight: normal;
       font-style: normal;
     }
+    @media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+/* For very small phones */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
 
     body {
       margin: 0;
@@ -38,7 +67,6 @@
       z-index: 1000;
     }
 
-    /* ——— Logo ——— */
     .logo {
       position: fixed;
       top: 57px;
@@ -365,4 +393,5 @@
   </script>
 </body>
 </html>
+
 
