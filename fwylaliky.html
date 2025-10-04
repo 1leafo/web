@@ -33,25 +33,21 @@
       align-items: center;
       justify-content: center;
       padding: 12px 51px;
+      padding-left: 90px;
       font-size: 26px;
       box-sizing: border-box;
       position: fixed;
       z-index: 1000;
     }
 
-    .topbar img {
-      position: absolute;
-      left: 20px;
-      height: 30px;
-      width: 30px;
-    }
+    
 
-    .logo {
-      position: absolute;
-      left: 10px;
-      top: 57px;
-      height: 33px;
-      width: 33px;
+  .logo {
+  position: absolute;
+  left: 10px;
+  top: 57px; 
+  height: 32px;
+  width: 32px;
     }
 
     .hero {
@@ -66,7 +62,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 250px;
+      top: 360px;
       width: 300px;
       height: 300px;
     }
@@ -82,7 +78,7 @@
       font-size: 30px;
       text-align: center;
       color: whitesmoke;
-      padding-bottom: 150px;
+      padding-bottom: 1550px;
     }
 
     .description {
@@ -102,7 +98,7 @@
       display: block;
       font-style: italic;
       white-space: pre-wrap;
-      margin-bottom: 18px;
+      margin-bottom: 40px;
     }
 
     .highlight {
@@ -148,6 +144,44 @@
       opacity: 0.8;
       z-index: 1000;
     }
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 10px;
+        font-size: 18px;
+        justify-content: center;
+        height: auto;
+      }
+      .logo {
+  position: absolute;
+  left: 10px;
+  top: 57px; 
+  height: 32px;
+  width: 32px;
+      }
+      .hero {
+        padding: 150px 10px 30px 10px;
+      }
+      .cover {
+        width: 200px;
+        height: 200px;
+      }
+      .content h1 {
+        font-size: 45px;
+      }
+      p, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 {
+        font-size: 16px;
+      }
+    }
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      font-size: 14px;
+      color: #000000;
+      font-family: monospace;
+      opacity: 0.8;
+      z-index: 1000;
+    }
 
   </style>
 </head>
@@ -173,7 +207,10 @@
 
 <div class="topbar">
   'find what you love and let it kill you'    OUT    NOW    ;D
-  <img src="images/favicon.png" alt="Logo">
+  <a href="/home">
+    <img src="images/favicon.png" alt="Logo" class="logo">
+  </a>
+  
 </div>
 
 <div class="hero">
@@ -252,7 +289,5 @@
 
 </body>
 </html>
-
-
 
 
