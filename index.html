@@ -25,7 +25,6 @@
       height: 100%;
       object-fit: cover;
     }
-
     .content {
       position: relative;
       z-index: 1;
@@ -46,81 +45,39 @@
       border-radius: 4px;
     }
     .footer {
-  position: fixed;
-  bottom: 10px;
-  left: 15px;
-  font-size: 14px;
-  color: #aaa; 
-  font-family: monospace; 
-  opacity: 0.8;
-  z-index: 1000;
-}
-
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      font-size: 14px;
+      color: #aaa; 
+      font-family: monospace; 
+      opacity: 0.8;
+      z-index: 1000;
+    }
+    @media (max-width: 480px) {
+      .enter {
+        font-size: 20px;
+        padding: 4px 8px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="pw-gate" style="
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:99999;
-">
-  <div id="pw-card" style="
-    position:relative;
-    width:calc(100% - 40px);
-    max-width:400px;
-    background:#fff;
-    padding:28px;
-    border-radius:8px;
-    box-shadow:0 12px 40px rgba(0,0,0,.6);
-    text-align:center;
-    font-family:Arial, sans-serif;
-  ">
-    <button id="pw-close" style="
-      position:absolute;
-      top:10px;
-      right:10px;
-      border:none;
-      background:transparent;
-      font-size:20px;
-      cursor:pointer;
-    ">&times;</button>
-
-    <div style="margin-bottom:18px; display:flex; justify-content:center;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
-        <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
-                 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
-                 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
-                 3 0 0 1 6 0v2z"/>
-      </svg>
+  <div id="pw-gate" style="position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:99999;">
+    <div id="pw-card" style="position:relative; width:calc(100% - 40px); max-width:400px; background:#fff; padding:28px; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.6); text-align:center; font-family:Arial, sans-serif;">
+      <button id="pw-close" style="position:absolute; top:10px; right:10px; border:none; background:transparent; font-size:20px; cursor:pointer;">&times;</button>
+      <div style="margin-bottom:18px; display:flex; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
+          <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+                   2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
+                   9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
+                   3 0 0 1 6 0v2z"/>
+        </svg>
+      </div>
+      <input id="pw-input" type="password" placeholder="password" style="width:100%; padding:10px 12px; font-size:16px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; outline:none; margin-bottom:14px;">
+      <button id="pw-submit" style="padding:10px 16px; font-size:15px; border-radius:6px; border:0; background:#111; color:#fff; cursor:pointer; width:100%;">Enter</button>
     </div>
-
-    <input id="pw-input" type="password" placeholder="password" style="
-      width:100%;
-      padding:10px 12px;
-      font-size:16px;
-      border:1px solid #ddd;
-      border-radius:6px;
-      box-sizing:border-box;
-      outline:none;
-      margin-bottom:14px;
-    ">
-
-    <button id="pw-submit" style="
-      padding:10px 16px;
-      font-size:15px;
-      border-radius:6px;
-      border:0;
-      background:#111;
-      color:#fff;
-      cursor:pointer;
-      width:100%;
-    ">Enter</button>
   </div>
-</div>
   <video autoplay muted loop playsinline>
     <source src="videos/background.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -128,52 +85,48 @@
   <div class="content">
     <a class="enter" href="/home">[enter if you wish :)]</a>
     <footer class="footer">
-  © 2025 leafo — all rights reserved
-</body>
+      © 2025 leafo — all rights reserved
+    </footer>
+  </div>
 <script>
   document.addEventListener('contextmenu', function(e) {
     if (e.target.tagName === 'IMG') {
       e.preventDefault();
     }
   });
-  // DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   
-(function () {
-  const PASSWORD = 'dakkelbutonileafo';
-  const STORAGE_KEY = 'pw-gate-unlocked';
-  const gate = document.getElementById('pw-gate');
-  const input = document.getElementById('pw-input');
-  const submit = document.getElementById('pw-submit');
-  const close = document.getElementById('pw-close');
+  (function () {
+    const PASSWORD = 'dakkelbutonileafo';
+    const STORAGE_KEY = 'pw-gate-unlocked';
+    const gate = document.getElementById('pw-gate');
+    const input = document.getElementById('pw-input');
+    const submit = document.getElementById('pw-submit');
+    const close = document.getElementById('pw-close');
 
-  // if unlocked
-  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-    gate.style.display = 'none';
-    return;
-  }
-
-  function unlock() {
-    if (input.value === PASSWORD) {
-      sessionStorage.setItem(STORAGE_KEY, '1');
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
       gate.style.display = 'none';
-    } else {
-      input.value = '';
-      input.focus();
+      return;
     }
-  }
 
-  submit.addEventListener('click', unlock);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') unlock();
-  });
-  close.addEventListener('click', () => {
-    gate.style.display = 'none';
-  });
+    function unlock() {
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        gate.style.display = 'none';
+      } else {
+        input.value = '';
+        input.focus();
+      }
+    }
 
-  input.focus();
-})();
+    submit.addEventListener('click', unlock);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') unlock();
+    });
+    close.addEventListener('click', () => {
+      gate.style.display = 'none';
+    });
+
+    input.focus();
+  })();
 </script>
+</body>
 </html>
-
-
-
-
