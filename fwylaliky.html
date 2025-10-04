@@ -14,7 +14,7 @@
       font-weight: normal;
       font-style: normal;
     }
-    
+
     html, body {
       margin: 0;
       padding: 0;
@@ -22,15 +22,9 @@
       background: rgba(0,0,0,0.6) no-repeat center center fixed;
       background-size: cover;
       font-family: 'leafo';
-
-      p, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 {
-        display: block;
-        font-style: italic;
-        white-space: pre-wrap;
-        margin: 100px;
-      }
-      
+      color: whitesmoke;
     }
+
     .topbar {
       width: 100%;
       background: black;
@@ -38,13 +32,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px;
-      padding-left: 51px;
+      padding: 12px 51px;
       font-size: 26px;
       box-sizing: border-box;
-      position: fixed;   
+      position: fixed;
       z-index: 1000;
-      
     }
 
     .topbar img {
@@ -52,25 +44,24 @@
       left: 20px;
       height: 30px;
       width: 30px;
-    
     }
+
     .logo {
-  position: absolute;
-  left: 10px;
-  top: 57px; 
-  height: 33px;
-  width: 33px;
+      position: absolute;
+      left: 10px;
+      top: 57px;
+      height: 33px;
+      width: 33px;
     }
 
     .hero {
-  background: url('images/albumBackground.png') no-repeat center center;
-  background-size: cover;
-  background-position: center;
-  display: block;
-  padding: 230px 0;
-  overflow-x: hidden;
-  min-height: 50vh;
+      background: url('images/albumBackground.png') no-repeat center center;
+      background-size: cover;
+      display: block;
+      padding: 230px 0 50px;
+      min-height: 50vh;
     }
+
     .cover {
       position: absolute;
       left: 50%;
@@ -78,40 +69,52 @@
       top: 250px;
       width: 300px;
       height: 300px;
-      
     }
-    h2 {
-      padding-bottom: -1000px;
-      margin: 15%;
-    }
-    .content {
-  padding-bottom: 200px;
-  font-size: 30px;
-  text-align: center;
-  color: whitesmoke;
-}
 
     .cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 8px;
-      display: block;
-      padding-top: 150px;
-      padding-left: 20px;
-    
     }
-    
+
+    .content {
+      font-size: 30px;
+      text-align: center;
+      color: whitesmoke;
+      padding-bottom: 50px;
+    }
+
     .description {
-  margin-top: 400px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 26px;
-  line-height: 1.7;
-  color: #fff;
-  padding: 0 40px;  
+      max-width: 1100px;
+      margin: 400px auto 50px;
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.7;
+      padding: 0 40px;
+    }
+
+    .description h2 {
+      margin-bottom: 20px;
+    }
+
+    .description p, .description p1, .description p2, .description p3, .description p4, .description p5, .description p6, .description p7, .description p8, .description p9, .description p10, .description p11 {
+      display: block;
+      font-style: italic;
+      white-space: pre-wrap;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      background-color: whitesmoke;
+      color: black;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     .social-icons {
@@ -135,59 +138,63 @@
       color: gray;
     }
 
-    .highlight {
-  background-color: whitesmoke;
-  color: black;
-  padding: 2px 4px;
-  border-radius: 3px;
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      font-size: 14px;
+      color: #aaa;
+      font-family: monospace;
+      opacity: 0.8;
+      z-index: 1000;
     }
-    a {
-  color: #ffffff;
-  text-decoration:underline;
-}
-.footer {
-  position: fixed;
-  bottom: 10px;
-  left: 15px;
-  font-size: 14px;
-  color: #aaa;
-  font-family: monospace;
-  opacity: 0.8;
-  z-index: 1000;
-}
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 10px;
+        font-size: 18px;
+        justify-content: center;
+        height: auto;
+      }
+      .topbar img {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 28px;
+        width: 28px;
+        display: block;
+      }
+
+      .content {
+        font-size: 20px;
+        padding-bottom: 30px;
+      }
+
+      .description {
+        font-size: 16px;
+        margin-top: 200px;
+        padding: 0 20px;
+      }
+
+      .cover {
+        width: 200px;
+        height: 200px;
+        top: 180px;
+      }
+
+      .social-icons a {
+        font-size: 20px;
+      }
+    }
 
   </style>
 </head>
 <body>
-<div id="pw-gate" style="
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:99999;
-">
-  <div id="pw-card" style="
-    position:relative;
-    width:calc(100% - 40px);
-    max-width:400px;
-    background:#fff;
-    padding:28px;
-    border-radius:8px;
-    box-shadow:0 12px 40px rgba(0,0,0,.6);
-    text-align:center;
-    font-family:Arial, sans-serif;
-  ">
-    <button id="pw-close" style="
-      position:absolute;
-      top:10px;
-      right:10px;
-      border:none;
-      background:transparent;
-      font-size:20px;
-      cursor:pointer;
-    ">&times;</button>
+
+<div id="pw-gate" style="position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:99999;">
+  <div id="pw-card" style="position:relative; width:calc(100% - 40px); max-width:400px; background:#fff; padding:28px; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.6); text-align:center; font-family:Arial, sans-serif;">
+    <button id="pw-close" style="position:absolute; top:10px; right:10px; border:none; background:transparent; font-size:20px; cursor:pointer;">&times;</button>
 
     <div style="margin-bottom:18px; display:flex; justify-content:center;">
       <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
@@ -198,43 +205,22 @@
       </svg>
     </div>
 
-    <input id="pw-input" type="password" placeholder="password" style="
-      width:100%;
-      padding:10px 12px;
-      font-size:16px;
-      border:1px solid #ddd;
-      border-radius:6px;
-      box-sizing:border-box;
-      outline:none;
-      margin-bottom:14px;
-    ">
-
-    <button id="pw-submit" style="
-      padding:10px 16px;
-      font-size:15px;
-      border-radius:6px;
-      border:0;
-      background:#111;
-      color:#fff;
-      cursor:pointer;
-      width:100%;
-    ">Enter</button>
+    <input id="pw-input" type="password" placeholder="password" style="width:100%; padding:10px 12px; font-size:16px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; outline:none; margin-bottom:14px;">
+    <button id="pw-submit" style="padding:10px 16px; font-size:15px; border-radius:6px; border:0; background:#111; color:#fff; cursor:pointer; width:100%;">Enter</button>
   </div>
 </div>
 
-  <div class="topbar">
-    'find what you love and let it kill you'    OUT    NOW    ;D
-  </div>
-  <a href="/home">
-  <img src="images/favicon.png" alt="Logo" class="logo">
-</a>
+<div class="topbar">
+  'find what you love and let it kill you'    OUT    NOW    ;D
+  <img src="images/favicon.png" alt="Logo">
+</div>
 
-  <div class="hero">
-    <div class="content">
+<div class="hero">
+  <div class="content">
     <h1>enter leafo's mind: II</h1>
     <div class="cover">
-    <img src="images/findwhatyouloveandletitkillyou.jpg" alt="Cover Art">
-  </div>
+      <img src="images/findwhatyouloveandletitkillyou.jpg" alt="Cover Art">
+    </div>
 
   <div class="description">
     <h2><a href="https://ffm.to/findwhatyoulove" target="_blank">find what you love and let it kill you</a></h2>
@@ -250,71 +236,58 @@
     <p9> lowkey   a   lil   weird   thing   to   do   LOL   but   thank   you   to   both   my   exes   ig.   yall   were   the   sole   inspirations   and   what   i   mainly   based   the   album   from   loooool </p8>
     <p10> and   to   you;   either   youre   a   viewer   or   a   listener   or   an   observer   or   maybe   you   dont   know    what   the   hell   is   going   on   as   you   clicked   the   link   lol,   thank   you.   ive   been   doing   this   music   bs   for   quite   some   time,   i   have   been   inlove   with   it   ever   since   and   i   will   keep   on   doing   it   til   the   day   i   fucking   die.   yall   watched   me   grow   physically   and   mentally   as   my   music   progressed   and   lowkey   i   love   yall   for   that.   i   made   new   friends,   i   found   love,   ive   run   through   heartbreaks,   ive   had   falling   outs,   i   had   my   ups   and   i   had   my   downs   but   thats   part   of   growing   up   and   im   so   glad   i   could   share   it   with   you   all.   ive   always   seen   myself   as   a   no-life   and   i   have   been   scared   cuz   i   had   no   ideas   &   no   plans   for   what   i   wanted   my   future   to   be.   i   sacrificed   a   lot   and   almost   lost   everything   just   to   achieve   this   dream   of   mine   which   still   has   more   to   be   done.   i   am   a   lazy   person,   and   pushing   myself   to   finish   this   15-song   album   (hella   delays   i   know   im   sorry)   helped   me   get   out   of   that   cycleof   procrastination   and   actually   lock   the   fuck   in.   i   hope   yall   enjoy   /   enjoyed   this   collection   of   the   thoughts   i   have   had   throughout   my   teenage   life   lol.   see   yall   next   project   but   til   then,   enjoy   the   album   :DD. </p9>
     <p11> - leafo <3 </p11>
-  </p>
   </div>
+  </div>
+</div>
 
-    
-  </div>
+<div class="social-icons">
+  <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
+  <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
+  <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
+  <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
+</div>
 
-  <div class="social-icons">
-    <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
-    <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
-    <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
-  </div>
 <footer class="footer">
   © 2025 leafo — all rights reserved
 </footer>
 
-</body>
 <script>
   document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
-      e.preventDefault();
-    }
+    if (e.target.tagName === 'IMG') e.preventDefault();
   });
-  // DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   
-(function () {
-  const PASSWORD = 'dakkelbutonileafo';
-  const STORAGE_KEY = 'pw-gate-unlocked';
-  const gate = document.getElementById('pw-gate');
-  const input = document.getElementById('pw-input');
-  const submit = document.getElementById('pw-submit');
-  const close = document.getElementById('pw-close');
 
-  // if unlocked
-  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-    gate.style.display = 'none';
-    return;
-  }
+  (function () {
+    const PASSWORD = 'dakkelbutonileafo';
+    const STORAGE_KEY = 'pw-gate-unlocked';
+    const gate = document.getElementById('pw-gate');
+    const input = document.getElementById('pw-input');
+    const submit = document.getElementById('pw-submit');
+    const close = document.getElementById('pw-close');
 
-  function unlock() {
-    if (input.value === PASSWORD) {
-      sessionStorage.setItem(STORAGE_KEY, '1');
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
       gate.style.display = 'none';
-    } else {
-      input.value = '';
-      input.focus();
+      return;
     }
-  }
 
-  submit.addEventListener('click', unlock);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') unlock();
-  });
-  close.addEventListener('click', () => {
-    gate.style.display = 'none';
-  });
+    function unlock() {
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        gate.style.display = 'none';
+      } else {
+        input.value = '';
+        input.focus();
+      }
+    }
 
-  input.focus();
-})();
+    submit.addEventListener('click', unlock);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+    close.addEventListener('click', () => { gate.style.display = 'none'; });
+    input.focus();
+  })();
 </script>
 
+</body>
 </html>
-
-
-
-
