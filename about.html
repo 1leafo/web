@@ -8,13 +8,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+  
     @font-face {
       font-family: 'leafo';
       src: url('fonts/leafo.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
-  
+
+
     body {
       margin: 0;
       background: #fff;
@@ -22,6 +24,7 @@
       color: #000;
       overflow-x: hidden;
     }
+
 
     .topbar {
      width: 100%;
@@ -38,6 +41,7 @@
       z-index: 1000;
     }
 
+
     .logo {
       position: fixed;
       top: 57px;
@@ -47,6 +51,7 @@
       cursor: pointer;
       z-index: 1000;
     }
+
 
     .footer {
       position: fixed;
@@ -58,6 +63,7 @@
       opacity: 0.8;
       z-index: 1000;
     }
+
 
     .about-container {
       display: flex;
@@ -93,6 +99,49 @@
       text-transform: lowercase;
       white-space: pre-wrap;
     }
+
+    @media (max-width: 900px) {
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 120px 40px;
+      }
+
+      .about-text {
+        max-width: 90%;
+        text-align: center;
+      }
+
+      .about-text h2 {
+        font-size: 32;
+        font-weight: bold;
+      }
+
+      .about-image {
+        width: 260px;
+        height: 340px;
+      }
+    }
+    .social-icons {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 9999;
+    }
+
+    .social-icons a i {
+      color: black;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a i:hover {
+      color: gray;
+    }
+
 
     #pw-gate {
       position: fixed;
@@ -153,7 +202,7 @@
 }
  a {
   color: #000000;
-  text-decoration:underline;
+  text-decoration:underline; 
  }
   </style>
 </head>
@@ -162,7 +211,7 @@
   <div id="pw-gate" style="
   position:fixed;
   inset:0;
-  background:#000;
+  background:#000; /* solid black background */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -231,13 +280,16 @@
     <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
   </div>
  
+
   <div class="topbar">
     'find what you love and let it kill you' OUT NOW ;D
   </div>
 
+
   <a href="/home">
     <img src="images/favicon.png" alt="Logo" class="logo">
   </a>
+
 
   <section class="about-container">
     <img src="images/about.png" alt="leafo portrait" class="about-image">
@@ -250,9 +302,11 @@
     </div>
   </section>
 
+
   <footer class="footer">
     © 2025 leafo — all rights reserved
   </footer>
+
 
   <script>
   // DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   DELETE WHEN ITS UP NA   
@@ -322,9 +376,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
