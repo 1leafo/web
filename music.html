@@ -182,7 +182,6 @@
 <body>
 <div id="pw-gate" style="position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:99999;">
   <div id="pw-card" style="position:relative; width:calc(100% - 40px); max-width:400px; background:#fff; padding:28px; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.6); text-align:center; font-family:Arial, sans-serif;">
-    <button id="pw-close" style="position:absolute; top:10px; right:10px; border:none; background:transparent; font-size:20px; cursor:pointer;">&times;</button>
     <div style="margin-bottom:18px; display:flex; justify-content:center;">
       <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
         <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
@@ -246,14 +245,10 @@ check   the   music   video   out   <a href="https://www.youtube.com/" target="_
 </div>
 
     <div class="song">
-      <img class="image" src="images/duke.jpg" alt="duke">
-      <div class="title">duke</div>
+      <img class="image" src="images/12.png" alt="12">
+      <div class="title">5</div>
     </div>
-    <div class="desc">the   name   of   my   ex's   dog   who   unfortunately   passed   away   earlier   this   year.   i   fucking   loved   that   dog   :,(   -   the   lines   
-"i   was   writing   on   the   walls   words   i   wish   i   couldve   told   when   your   mom   started   to   call   just   to   see   my   view"   is   
-probably   one   of   my   favorite   lines   that   ive   written   throughout   the   entire   album   cuz   like   idk   i   js   wanted   to   check   
-up   on   duke   and   see   how   hes   been   after   she   asked   me   to   link   up   for   closure.
-</div>
+    <div class="desc">song description</div>
 
     <div class="song">
       <img class="image" src="images/ohyeahialsofeelenvioussometimeslol.jpg" alt="ohyeahialsofeelenvioussometimeslol">
@@ -301,10 +296,14 @@ same   girl   who   left   me   if   yall   get   what   im   trying   to   put 
 got   my   bag   up   :p</div>
 
     <div class="song">
-      <img class="image" src="images/11.png" alt="11">
-      <div class="title">11</div>
+      <img class="image" src="images/duke.jpg" alt="duke">
+      <div class="title">duke</div>
     </div>
-    <div class="desc">song description</div>
+    <div class="desc">the   name   of   my   ex's   dog   who   unfortunately   passed   away   earlier   this   year.   i   fucking   loved   that   dog   :,(   -   the   lines   
+"i   was   writing   on   the   walls   words   i   wish   i   couldve   told   when   your   mom   started   to   call   just   to   see   my   view"   is   
+probably   one   of   my   favorite   lines   that   ive   written   throughout   the   entire   album   cuz   like   idk   i   js   wanted   to   check   
+up   on   duke   and   see   how   hes   been   after   she   asked   me   to   link   up   for   closure.
+</div>
 
     <div class="song">
       <img class="image" src="images/12.png" alt="12">
@@ -370,7 +369,6 @@ thank   you   isnt   enough   for   everything   they   provided   for   me   ha
     const gate = document.getElementById('pw-gate');
     const input = document.getElementById('pw-input');
     const submit = document.getElementById('pw-submit');
-    const close = document.getElementById('pw-close');
 
     if (sessionStorage.getItem(STORAGE_KEY) === '1') {
       gate.style.display = 'none';
@@ -396,6 +394,7 @@ thank   you   isnt   enough   for   everything   they   provided   for   me   ha
 
 </body>
 </html>
+
 
 
 
