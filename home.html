@@ -18,8 +18,7 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background: rgba(0,0,0,0.6) no-repeat center center fixed;
-      background-size: cover;
+      background: rgba(0,0,0,0.6);
       font-family: 'leafo';
     }
 
@@ -55,7 +54,6 @@
       text-align: center;
       padding: 230px 60px;
       box-sizing: border-box;
-      overflow-x: hidden;
     }
 
     .puzzle-container {
@@ -67,21 +65,49 @@
       overflow: visible;
     }
 
-    .puzzle-container img {
+    .puzzle {
+      display: inline-block;
+      transform-origin: center center;
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+    }
+
+    .puzzle img {
+      display: block;
       width: 200px;
       height: auto;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      opacity: 0;
       transform-origin: center center;
+      transform: translateY(40px) scale(0.95);
+      animation: riseUp 0.9s ease-out forwards;
+      transition: transform 0.5s cubic-bezier(.22,1,.36,1), opacity 0.3s ease;
+      will-change: transform, opacity;
     }
 
-    .puzzle1 { transform: rotate(-15deg); }
-    .puzzle2 { transform: rotate(8deg); }
-    .puzzle3 { transform: rotate(-6deg); }
-    .puzzle4 { transform: rotate(12deg); }
+    .puzzle1 { --tilt: -15deg; }
+    .puzzle2 { --tilt: 8deg; }
+    .puzzle3 { --tilt: -6deg; }
+    .puzzle4 { --tilt: 12deg; }
 
-    .puzzle-container img:hover {
-      transform: scale(1.1) rotate(var(--rotation));
+    .puzzle1 img { animation-delay: 0.4s; }
+    .puzzle2 img { animation-delay: 0.4s; }
+    .puzzle3 img { animation-delay: 0.4s; }
+    .puzzle4 img { animation-delay: 0.4s; }
+
+    @keyframes riseUp {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      60% { opacity: 1; transform: translateY(-6px) scale(1.03); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .puzzle:hover,
+    .puzzle:focus-within {
+      transform: rotate(0deg);
+    }
+    .puzzle:hover img,
+    .puzzle:focus-within img {
+      transform: translateY(-8px) scale(1.06);
     }
 
     .caption {
@@ -118,123 +144,88 @@
       bottom: 10px;
       left: 15px;
       font-size: 14px;
-      color: #000000;
+      color: beige;
       font-family: monospace;
       opacity: 0.8;
       z-index: 1000;
     }
 
     @media (max-width: 768px) {
-      .hero {
-        padding: 120px 20px;
-      }
-
-      .puzzle-container {
-        flex-direction: column;
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .puzzle-container img {
-        width: 150px;
-      }
-
-      .caption {
-        font-size: 24px;
-      }
-
-      .top-bar {
-        font-size: 18px;
-        text-align: center;
-        padding: 10px;
-      }
-
-      .social-icons {
-        right: 10px;
-        bottom: 20px;
-        gap: 8px;
-      }
-
-      .social-icons a {
-        font-size: 20px;
-      }
-
-      .footer {
-        font-size: 12px;
-        left: 10px;
-        bottom: 50px;
-      }
+      .hero { padding: 120px 20px; }
+      .puzzle-container { flex-direction: column; gap: 30px; margin-top: 40px; }
+      .puzzle img { width: 150px; }
+      .caption { font-size: 24px; }
+      .top-bar { font-size: 18px; text-align: center; padding: 10px; }
+      .social-icons { right: 10px; bottom: 20px; gap: 8px; }
+      .social-icons a { font-size: 20px; }
+      .footer { font-size: 12px; left: 10px; bottom: 50px; }
     }
   </style>
 </head>
 <body>
-<div id="pw-gate" style="
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:99999;
-">
-  <div id="pw-card" style="
-    position:relative;
-    width:calc(100% - 40px);
-    max-width:400px;
-    background:#fff;
-    padding:28px;
-    border-radius:8px;
-    box-shadow:0 12px 40px rgba(0,0,0,.6);
-    text-align:center;
-    font-family:Arial, sans-serif;
+
+  <div id="pw-gate" style="
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
   ">
-
-    <div style="margin-bottom:18px; display:flex; justify-content:center;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
-        <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
-                 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
-                 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
-                 3 0 0 1 6 0v2z"/>
-      </svg>
-    </div>
-
-    <input id="pw-input" type="password" placeholder="password" style="
-      width:100%;
-      padding:10px 12px;
-      font-size:16px;
-      border:1px solid #ddd;
-      border-radius:6px;
-      box-sizing:border-box;
-      outline:none;
-      margin-bottom:14px;
+    <div id="pw-card" style="
+      position:relative;
+      width:calc(100% - 40px);
+      max-width:400px;
+      background:#fff;
+      padding:28px;
+      border-radius:8px;
+      box-shadow:0 12px 40px rgba(0,0,0,.6);
+      text-align:center;
+      font-family:Arial, sans-serif;
     ">
+      <div style="margin-bottom:18px; display:flex; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
+          <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+                   2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
+                   9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
+                   3 0 0 1 6 0v2z"/>
+        </svg>
+      </div>
 
-    <button id="pw-submit" style="
-      padding:10px 16px;
-      font-size:15px;
-      border-radius:6px;
-      border:0;
-      background:#111;
-      color:#fff;
-      cursor:pointer;
-      width:100%;
-    ">Enter</button>
-  </div>
-</div>
+      <input id="pw-input" type="password" placeholder="password" style="
+        width:100%;
+        padding:10px 12px;
+        font-size:16px;
+        border:1px solid #ddd;
+        border-radius:6px;
+        box-sizing:border-box;
+        outline:none;
+        margin-bottom:14px;
+      ">
 
-  <div class="top-bar">
-    'find what you love and let it kill you' OUT NOW ;D
+      <button id="pw-submit" style="
+        padding:10px 16px;
+        font-size:15px;
+        border-radius:6px;
+        border:0;
+        background:#111;
+        color:#fff;
+        cursor:pointer;
+        width:100%;
+      ">Enter</button>
+    </div>
   </div>
-  <a href="/home">
-    <img src="images/favicon.png" alt="Logo" class="logo">
-  </a>
+
+  <div class="top-bar">'find what you love and let it kill you' OUT NOW ;D</div>
+  <a href="/home"><img src="images/favicon.png" alt="Logo" class="logo"></a>
 
   <div class="hero">
     <div class="puzzle-container">
-      <a href="/music"><img src="images/topLeft.png" alt="Puzzle 1" class="puzzle1"></a>
-      <a href="/fwylaliky"><img src="images/bottomLeft.png" alt="Puzzle 2" class="puzzle2"></a>
-      <a href="/about"><img src="images/topRight.png" alt="Puzzle 3" class="puzzle3"></a>
-      <a href="/contact"><img src="images/bottomRight.png" alt="Puzzle 4" class="puzzle4"></a>
+      <a href="/music" class="puzzle puzzle1"><img src="images/topLeft.png" alt="Puzzle 1"></a>
+      <a href="/fwylaliky" class="puzzle puzzle2"><img src="images/bottomLeft.png" alt="Puzzle 2"></a>
+      <a href="/about" class="puzzle puzzle3"><img src="images/topRight.png" alt="Puzzle 3"></a>
+      <a href="/contact" class="puzzle puzzle4"><img src="images/bottomRight.png" alt="Puzzle 4"></a>
     </div>
     <div class="caption">[pick your piece]</div>
   </div>
@@ -243,28 +234,25 @@
     <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
+    <a href="https://linktr.ee/1leafo" target="_blank"><i class="fas fa-link"></i></a>
     <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
     <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
     <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
   </div>
 
-  <footer class="footer">
-    © 2025 leafo — all rights reserved
-  </footer>
+  <footer class="footer">© 2025 leafo — all rights reserved</footer>
 
   <script>
-    document.addEventListener('contextmenu', function(e) {
+    document.addEventListener('contextmenu', e => {
       if (e.target.tagName === 'IMG') e.preventDefault();
     });
 
-    (function () {
+    (() => {
       const PASSWORD = 'dakkelbutonileafo';
       const STORAGE_KEY = 'pw-gate-unlocked';
       const gate = document.getElementById('pw-gate');
       const input = document.getElementById('pw-input');
       const submit = document.getElementById('pw-submit');
-      const close = document.getElementById('pw-close');
 
       if (sessionStorage.getItem(STORAGE_KEY) === '1') {
         gate.style.display = 'none';
@@ -283,10 +271,8 @@
 
       submit.addEventListener('click', unlock);
       input.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
-      close.addEventListener('click', () => { gate.style.display = 'none'; });
       input.focus();
     })();
   </script>
 </body>
 </html>
-
