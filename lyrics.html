@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leafo // lyrics</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: 'leafo';
+      src: url(fonts/leafo.ttf) format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'leafo';
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .topbar {
+      width: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      padding-left: 51px;
+      font-size: 26px;
+      box-sizing: border-box;
+      position: fixed;   
+      z-index: 1000;
+    }
+    .topbar img {
+      position: absolute;
+      left: 20px;
+      height: 10px;
+      width: 30px;
+    }
+    .logo {
+      position: absolute;
+      left: 10px;
+      top: 57px; 
+      height: 33px;
+      width: 33px;
+    }
+    .content {
+      padding-top: 110px;
+      font-style: italic;
+    }
+    h1 {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+    .song {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 50px auto 10px auto;
+      width: 600px;
+    }
+    .song .title {
+      font-size: 36px;
+      font-weight: bold;
+      
+      text-align: center;
+    
+      
+      
+    }
+    .desc {
+      font-size: 20px;
+      font-weight: bold;
+      font-style: italic;
+      color: #000000;
+      text-align: center;
+      margin: 30px auto 40px auto;
+      width: 600px;
+      line-height: 1.4em;
+      white-space: pre-wrap;
+    }
+    .social-icons {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 9999;
+    }
+    .social-icons a i {
+      color: black;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a i:hover {
+      color: gray;
+    }
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      font-size: 14px;
+      color: #000000;
+      font-family: monospace;
+      opacity: 0.8;
+      z-index: 1000;
+    }
+    a {
+      color: #000000;
+      text-decoration:underline;
+    }
+    @media (max-width: 480px) {
+      .topbar {
+    padding: 10px;  
+    font-size: 18px;  
+    justify-content: center;  
+    height: auto;  
+  }
+  .topbar img {
+    position: absolute;
+    left: 10px;  
+    top: 50%;  
+    transform: translateY(-50%);  
+    height: 28px;  
+    width: 28px;  
+    display: block;
+      }
+      .song {
+        width: 95%;
+        flex-direction: column;
+        margin: 30px auto;
+      }
+      .song .image {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      .song .title {
+        width: 100%;
+        font-size: 22px;
+        text-align: center;
+      }
+      .desc {
+        width: 95%;
+        font-size: 16px;
+        margin: 20px auto 30px auto;
+      }
+      h1 {
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+
+      .social-icons {
+        position: absolute;
+        right: 10px;
+        bottom: -8385px;
+        gap: 8px;
+        font-size: 24px;
+      }
+
+      .social-icons a {
+        font-size: 24px;
+      }
+
+      .footer {
+        position: absolute;
+        font-size: 14px;
+        left: 10px;
+        bottom: -8400px; 
+  }
+}
+  </style>
+</head>
+<body>
+<div id="pw-gate" style="position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:99999;">
+  <div id="pw-card" style="position:relative; width:calc(100% - 40px); max-width:400px; background:#fff; padding:28px; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.6); text-align:center; font-family:Arial, sans-serif;">
+    <button id="pw-close" style="position:absolute; top:10px; right:10px; border:none; background:transparent; font-size:20px; cursor:pointer;">&times;</button>
+    <div style="margin-bottom:18px; display:flex; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" viewBox="0 0 24 24">
+        <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 
+                 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-5 
+                 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3-9H9V6a3 
+                 3 0 0 1 6 0v2z"/>
+      </svg>
+    </div>
+    <input id="pw-input" type="password" placeholder="password" style="width:100%; padding:10px 12px; font-size:16px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; outline:none; margin-bottom:14px;">
+    <button id="pw-submit" style="padding:10px 16px; font-size:15px; border-radius:6px; border:0; background:#111; color:#fff; cursor:pointer; width:100%;">Enter</button>
+  </div>
+</div>
+
+<div class="topbar">
+  'find what you love and let it kill you'    OUT    NOW    ;D
+</div>
+<a href="/home">
+  <img src="images/favicon.png" alt="Logo" class="logo">
+</a>
+
+<div class="content">
+  <h1>enter leafo's mind: III</h1>
+
+    <div class="song">
+  <div class="title">r u alright</div>
+  <p></p>
+    </div>
+    <div class="desc">paint me with your blood
+all of the words i couldve said, it never made it past my tongue
+ohhhh, ill point a gun to my head
+and nows the chance to tell me everything before i end up dead
+
+
+just wanna know if youre
+
+
+alright
+the way you looked at me 
+i might be overthinking, its unhealthy
+i bet you think about me 
+all night
+everything inside tells me youre the one i like
+wish you could see 
+the way i see you in my
+own eyes
+are you alright? are you alright?
+baby are you alright? 
+
+
+and i dont think ill make it out alive
+but even if you asked, i wont oblige
+im sorry i dont have what youre looking for
+im sorry i dont have what youre looking for
+turned against me with all your friends
+i might just say it twice, ill say it again
+and now i see you in his shirt (are you srs?)
+i made a tapestry of my own curse
+</div>
+
+    <div class="song">
+
+  <div class="title">fourteen</div>
+    </div>
+    <div class="desc">wrote you letters in october but you read it in may
+tried to tap you on your shoulder but you pushed me away
+wanna run to your place, but im a little too late
+i dont know what you want me to say
+
+
+we fell inlove at 14
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+14 
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+
+
+you said it was nothing, but im not blind
+i saw the way you looked at him when he walked by
+but when i did the same, somehow im the bad guy?
+i wanna mess wit ur head like u did wit mine
+and then you swear you felt it coming
+still you kept on running
+stared at him too long and
+said your heart meant nothing
+claimed that you were changing
+but you were just bluffing
+mad i found somebody
+guess that makes us nothing
+
+
+gave you my heart at 14
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+14 
+but i dont think that youre the 1 4 me
+you were way different at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+
+
+we fell inlove at 14
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+14 
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+gave you my heart at 14
+but i dont think that youre the 1 4 me
+we fell so deep at 14
+but i dont think that youre the 1 4 me
+not the 1 4 me
+14
+
+
+fourteen
+fourteen
+yuh we were fourteen
+fourteen</div>
+
+    <div class="song">
+
+      <div class="title">i know</div>
+    </div>
+    <div class="desc">geh
+
+
+its a quarter past ten, can we meet again?
+got things i wanna say but i dont think youd hear the end
+like where were you when i needed you, it just dont make no sense
+but who am i to act on it, im no longer in your head
+
+
+cuz what are you looking for?
+i thought i was all you wanted
+now you dont know who you are
+cuz what are you looking for?
+i thought i was all you wanted
+now im the one you ignore
+
+
+i know im still on your mind (mind)
+when you see the stars at night (night)
+and you know that you cant hide (hide)
+i just hope we coincide (coincide)
+
+
+2 years ago when you were looking at me
+you whispered "i love you" when we were in the backseat
+remember those promises where you said youre mine?
+now youre with him like what the fuck was the point?
+
+
+if you saw it, in my eyes
+i was dying when you werent there
+i wasnt ready for goodbyes
+but i dont think you seemed to care
+did you think i forgot what you said?
+cant believe i cried over you
+now you just left me in dread
+would you believe i wouldve died for you</div>
+
+    <div class="song">
+
+      <div class="title">find what you love and let it kill you</div>
+    </div>
+    <div class="desc"></div>
+
+    <div class="song">
+
+      <div class="title">surprise, theres nothing left</div>
+    </div>
+    <div class="desc">i kept that hope that maybe youd return
+i tried to stay no matter how it hurt
+i watched the clock as every second burned
+and then u broke me and left me on the curb
+i waited out until theres nothing left
+i waited out til my heart dont beat my chest
+you said some things you never really meant
+you told me sht that pierced right through my flesh
+
+
+was on my chair, you texted me "lets reconnect"
+i thought you hated me, thats why you fcking left
+you let me in again, it just dont make no sense
+you said you were scared of what our friends would think
+now youre thinking whats next?
+when you thought its for the best
+and now who would you text,
+when youre crying in bed?
+and we've been here before
+watched you walk out the door
+and i slept on the floor
+cant believe you wanted more
+
+
+i kept that hope that maybe youd return
+i tried to stay no matter how it hurt
+i watched the clock as every second burned
+and then u broke me and left me on the curb
+i waited out until theres nothing left
+i waited out til my heart dont beat my chest
+you said some things you never really meant
+you told me sht that pierced right through my flesh
+
+
+do you know what its like to dream abt this every single night?
+or do you know what its like to hope a different outcome every flight
+now youre thinking whats next?
+when you thought its for the best
+and now who would you text,
+when youre crying in bed?
+and we've been here before
+watched you walk out the door
+and i slept on the floor
+cant believe you wanted more
+</div>
+
+    <div class="song">
+
+      <div class="title">im sorry i pushed u away</div>
+    </div>
+    <div class="desc"></div>
+
+    <div class="song">
+
+      <div class="title">alie</div>
+    </div>
+    <div class="desc"></div>
+
+    <div class="song">
+
+      <div class="title">oh yeah i also feel envious sometimes lol</div>
+    </div>
+    <div class="desc">if you ask how i'd feel, i'd say im fine
+but if you ask again, id say i wish i died
+(but if you ask again, id say i wish i died)
+(but if you ask again, i might jus fucking cry)
+cuz theyre perfect, im hurting, cant clear up my mind
+theyre all one step ahead while im wasting my time
+writing these poems, for people that cry
+but i think its okay cuz ill just leave at night
+
+
+and i envy all my friends
+who seem so perfect til theyre dead
+who seems the type that can impress
+with calm patience and lessened stress
+and i envy all my friends
+who seem so perfect til theyre dead
+theres jus no screaming in their heads
+theres jus no screaming in their heads
+
+
+leave me dead if you hate me, i know im aware
+cant blend in, am i annoying? ill get off your hair
+sorry if i talk too much i know that you dont rly care
+i know that im different from my friends but please do not compare
+
+
+keep getting tongue-tied, hard to speak how i feel
+more than just one time, my emotions concealed
+his only son died, 50/50 ill make it real
+more than just one time, my emotions concealed
+cuz theyre perfect, im hurting, cant clear up my mind
+theyre all one step ahead while im wasting my time
+i cant keep up, u can see it in my eyes
+kaya potangina, i might as well just try
+</div>
+
+    <div class="song">
+
+      <div class="title">trial + error</div>
+    </div>
+    <div class="desc">stupid
+
+
+do you know what you just did?
+you turned your back and burned the bridge
+youre such a narcissist at heart, it hurts to see you
+turn the way you did
+oh
+
+
+cuz how u gonna bitch and call your friends all clowns?
+while you got that bad energy i cant be around
+and then u stabbed me in the back while we were skipping towns
+while you paint yourself with lies you found
+i know for a fact youll never change
+i know for a fact youll never change
+i know for a fact youll never change
+i know for a fact youll never change
+
+post-chorus:
+mac demarco lol
+
+
+(stupid)
+now youre on your own like what you gonna do?
+tryna fill the void with all the things youre gonna lose 
+heard u found urself but u the lost the ones u knew
+acting like u grew but theres nothing new
+</div>
+
+    <div class="song">
+
+      <div class="title">i dont know u anymore like i used to</div>
+    </div>
+    <div class="desc">hallucinations of you in my room
+and im eating all the things that arent allowed to consume
+
+
+blood on my white tee
+from the words you've said to me
+hate what i have
+so i bathe in blood, it stained my teeth
+i just wanna dance in my room
+and i'll eat my eyes in the afternoon
+missing you bad now i smell your perfume
+
+
+ive been up and i saw the sun rise
+and i know its my fault and i know i lied
+but i hate your friends, i apologize
+but i dont wanna waste my time on crying
+so i changed your contact, i changed my phone
+you live nearby so i moved from home
+but the lights are on, you can knock on the door
+but this time i dont know you anymore
+
+
+i dont know you anymore
+i dont know you anymore
+i dont know you anymore
+i dont know you anymore
+cuz i dont know you anymore
+i dont know you anymore
+i dont know you anymore
+lights are open, you can knock on the door
+
+
+reading all the letters that you wrote me and i cried
+then i somehow ended js up on the floor, slept on my side
+missing when you talk to me, can we please meet tonight?
+and im losing all my grip, i lost my mind, i cant decide
+all of it was from my heart, what i gave you
+i fucked up and i know my mistakes too
+honestly i dont really blame you
+but its hard to move on when i dont hate you
+
+
+i dont know you i dont know you i dont know you i dont know you
+i dont know you i dont know you i dont know you i dont know you
+i dont know you i dont know you i dont know you i dont know you
+i dont know you i dont know you i dont know you i dont know you
+</div>
+
+    <div class="song">
+
+      <div class="title">alimango</div>
+    </div>
+    <div class="desc"></div>
+
+    <div class="song">
+
+      <div class="title">summer's over sorry</div>
+    </div>
+    <div class="desc"></div>
+
+    <div class="song">
+
+      <div class="title">a page off the book</div>
+    </div>
+    <div class="desc">thinking bout what i did inside my head
+you looked at me so differently
+could you rewrite the things ive said?
+or the things that went?
+or the things i did?
+
+
+ohhhhh, i fed the fire with my mistakes
+watched it burn whats left of me
+i told you to get away from me
+ohhhhh, i shouldve never had a name
+i messed the line you meant to say in your story
+you shouldve ripped the page
+
+
+and maybe then if i tried harder
+maybe id be something more
+you were outside with your brother
+and i was passed out on the floor
+talked down then you went your way
+you said some things that you didnt think
+and i still remember your taste
+no matter how much i try to drink
+</div>
+
+    <div class="song">
+
+      <div class="title">myself</div>
+    </div>
+    <div class="desc">lift the pieces i just dropped, i know its hard to find
+so i sat down on the window sill cuz i started to lose my mind
+i was pulling on the final thread but i cant leave yall behind
+they helped me to learn to crawl but i just wasted their time
+deserve the consequences of my actions that i made
+and ill play it cool but ill break my bones to make you feel okay
+wish that i was better at meaning the words i throw when i feel scared
+kept my tears inside a bottle, i dont think that you care
+
+
+i didnt push yall away, js didnt believe in ur help
+i wasnt mad at you, i was just mad at myself
+every open hand just reminded me of guilt
+so i bled on their arms just to prove how i felt
+im doing better than my past year self 
+but im pretty sure he was happier
+and everything i wrote, its on the wall
+and everything i wrote, its on the wall
+
+
+fuck that guy i hope hes dead
+i said i said i said i said
+fuck that guy i hope hes dead</div>
+
+    <div class="song">
+
+      <div class="title">growth, from 2007</div>
+    </div>
+    <div class="desc"></div>
+</div>
+
+<div class="social-icons">
+  <a href="https://instagram.com/_leafo" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://youtube.com/@1leafo" target="_blank"><i class="fab fa-youtube"></i></a>
+  <a href="https://twitter.com/1leafo" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://solo.to/leafo" target="_blank"><i class="fas fa-link"></i></a>
+  <a href="https://tiktok.com/@1leafo" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://soundcloud.com/yayleafo" target="_blank"><i class="fab fa-soundcloud"></i></a>
+  <a href="https://open.spotify.com/artist/6bNgGM07qTUVBDrKgfJROr" target="_blank"><i class="fab fa-spotify"></i></a>
+</div>
+
+<footer class="footer">
+  © 2025 leafo — all rights reserved
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', function(e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  (function () {
+    const PASSWORD = 'tabangaoen2007';
+    const STORAGE_KEY = 'pw-gate-unlocked';
+    const gate = document.getElementById('pw-gate');
+    const input = document.getElementById('pw-input');
+    const submit = document.getElementById('pw-submit');
+    const close = document.getElementById('pw-close');
+
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+      gate.style.display = 'none';
+      return;
+    }
+
+    function unlock() {
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        gate.style.display = 'none';
+      } else {
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    submit.addEventListener('click', unlock);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+    close.addEventListener('click', () => { gate.style.display = 'none'; });
+    input.focus();
+  })();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
